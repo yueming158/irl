@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		<modelVersion>4.0.0</modelVersion>
+
+		<groupId>irl</groupId>
+		<artifactId>com.yueyang</artifactId>
+		<packaging>pom</packaging>
+		<version>1.0-SNAPSHOT</version>
+		<modules>
+				<module>irl-api</module>
+				<module>irl-service</module>
+		</modules>
+
+		<properties>
+				<spring.boot.version>2.1.5.RELEASE</spring.boot.version>
+				<jdk.version>1.8</jdk.version>
+				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		</properties>
+
+		<dependencyManagement>
+				<dependencies>
+						<dependency>
+								<groupId>org.springframework.boot</groupId>
+								<artifactId>spring-boot-starter-parent</artifactId>
+								<version>${spring.boot.version}</version>
+								<type>pom</type>
+								<scope>import</scope>
+						</dependency>
+				</dependencies>
+		</dependencyManagement>
+
+		<build>
+				<!-- 通用插件 -->
+				<plugins>
+						<!-- 编译插件 -->
+						<plugin>
+								<artifactId>maven-compiler-plugin</artifactId>
+								<configuration>
+										<source>${jdk.version}</source>
+										<target>${jdk.version}</target>
+										<encoding>${project.build.sourceEncoding}</encoding>
+								</configuration>
+						</plugin>
+				</plugins>
+
+				<!-- 其它插件管理 -->
+				<pluginManagement>
+						<plugins>
+								<!-- 源码打包插件 -->
+								<plugin>
+										<artifactId>maven-source-plugin</artifactId>
+								</plugin>
+
+								<!-- javadoc生成插件 -->
+								<plugin>
+										<artifactId>maven-javadoc-plugin</artifactId>
+								</plugin>
+
+								<!-- 版本管理插件 -->
+								<plugin>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>versions-maven-plugin</artifactId>
+								</plugin>
+						</plugins>
+				</pluginManagement>
+		</build>
+
+</project>
