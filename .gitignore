@@ -20,6 +20,8 @@ irl-api/target/
 *.ipr
 */target/
 *.mvn/
+*mvnw
+*mvnw.cmd
 
 ### NetBeans ###
 /nbproject/private/
