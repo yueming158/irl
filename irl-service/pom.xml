@@ -5,8 +5,8 @@
 		<modelVersion>4.0.0</modelVersion>
 
 		<parent>
-				<artifactId>com.yueyang</artifactId>
-				<groupId>irl</groupId>
+				<groupId>com.yueyang</groupId>
+				<artifactId>irl</artifactId>
 				<version>1.0-SNAPSHOT</version>
 		</parent>
 
@@ -22,6 +22,23 @@
 				<dependency>
 						<groupId>org.springframework.boot</groupId>
 						<artifactId>spring-boot-starter-data-redis</artifactId>
+						<exclusions>
+								<exclusion>
+										<groupId>io.lettuce</groupId>
+										<artifactId>lettuce-core</artifactId>
+								</exclusion>
+						</exclusions>
+				</dependency>
+
+				<dependency>
+						<groupId>redis.clients</groupId>
+						<artifactId>jedis</artifactId>
+				</dependency>
+
+				<dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-configuration-processor</artifactId>
+						<optional>true</optional>
 				</dependency>
 
 				<dependency>
@@ -38,18 +55,58 @@
 				</dependency>
 
 				<dependency>
-						<groupId>irl</groupId>
+						<groupId>org.apache.dubbo</groupId>
+						<artifactId>dubbo-spring-boot-starter</artifactId>
+				</dependency>
+
+				<dependency>
+						<groupId>org.apache.dubbo</groupId>
+						<artifactId>dubbo</artifactId>
+				</dependency>
+
+				<dependency>
+						<groupId>com.yueyang</groupId>
 						<artifactId>irl-api</artifactId>
 						<version>1.0-SNAPSHOT</version>
 				</dependency>
 
 		</dependencies>
 
+		<profiles>
+				<profile>
+						<id>dev</id>
+						<properties>
+								<env>dev</env>
+						</properties>
+						<activation>
+								<activeByDefault>true</activeByDefault>
+						</activation>
+				</profile>
+				<profile>
+						<id>test</id>
+						<properties>
+								<env>test</env>
+						</properties>
+				</profile>
+				<profile>
+						<id>prod</id>
+						<properties>
+								<env>prod</env>
+						</properties>
+				</profile>
+		</profiles>
+
 		<build>
 				<plugins>
 						<plugin>
 								<groupId>org.springframework.boot</groupId>
 								<artifactId>spring-boot-maven-plugin</artifactId>
+						</plugin>
+						<plugin>
+								<artifactId>maven-surefire-plugin</artifactId>
+								<configuration>
+										<skip>true</skip>
+								</configuration>
 						</plugin>
 				</plugins>
 		</build>

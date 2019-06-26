@@ -1,0 +1,24 @@
+{
+  "groups": [
+    {
+      "name": "snowflake",
+      "type": "com.yueyang.config.SnowflakeIdConfig",
+      "sourceType": "com.yueyang.config.SnowflakeIdConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "snowflake.data-center-id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.yueyang.config.SnowflakeIdConfig",
+      "defaultValue": 0
+    },
+    {
+      "name": "snowflake.worker-id",
+      "type": "java.lang.Integer",
+      "sourceType": "com.yueyang.config.SnowflakeIdConfig",
+      "defaultValue": 0
+    }
+  ],
+  "hints": []
+}

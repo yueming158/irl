@@ -9,13 +9,7 @@ public interface IdService {
 
     /**
      * 创建数据库主键id
-     * @return
      */
-    Long createPrimaryId();
+    Long getGenerateId();
 
-    /**
-     * 创建订单id
-     * @return
-     */
-    Long createOrderId();
 }

@@ -4,8 +4,8 @@
 				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<modelVersion>4.0.0</modelVersion>
 
-		<groupId>irl</groupId>
-		<artifactId>com.yueyang</artifactId>
+		<groupId>com.yueyang</groupId>
+		<artifactId>irl</artifactId>
 		<packaging>pom</packaging>
 		<version>1.0-SNAPSHOT</version>
 		<modules>
@@ -17,6 +17,7 @@
 				<spring.boot.version>2.1.5.RELEASE</spring.boot.version>
 				<jdk.version>1.8</jdk.version>
 				<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+				<dubbo.version>2.7.1</dubbo.version>
 		</properties>
 
 		<dependencyManagement>
@@ -27,6 +28,40 @@
 								<version>${spring.boot.version}</version>
 								<type>pom</type>
 								<scope>import</scope>
+						</dependency>
+
+						<dependency>
+								<groupId>org.apache.dubbo</groupId>
+								<artifactId>dubbo-dependencies-bom</artifactId>
+								<version>${dubbo.version}</version>
+								<type>pom</type>
+								<scope>import</scope>
+						</dependency>
+
+						<dependency>
+								<groupId>org.apache.dubbo</groupId>
+								<artifactId>dubbo-spring-boot-starter</artifactId>
+								<version>${dubbo.version}</version>
+						</dependency>
+
+						<dependency>
+								<groupId>org.apache.dubbo</groupId>
+								<artifactId>dubbo</artifactId>
+								<version>${dubbo.version}</version>
+								<exclusions>
+										<exclusion>
+												<groupId>org.springframework</groupId>
+												<artifactId>spring</artifactId>
+										</exclusion>
+										<exclusion>
+												<groupId>javax.servlet</groupId>
+												<artifactId>servlet-api</artifactId>
+										</exclusion>
+										<exclusion>
+												<groupId>log4j</groupId>
+												<artifactId>log4j</artifactId>
+										</exclusion>
+								</exclusions>
 						</dependency>
 				</dependencies>
 		</dependencyManagement>
@@ -62,6 +97,9 @@
 								<plugin>
 										<groupId>org.codehaus.mojo</groupId>
 										<artifactId>versions-maven-plugin</artifactId>
+								</plugin>
+								<plugin>
+										<artifactId>maven-surefire-plugin</artifactId>
 								</plugin>
 						</plugins>
 				</pluginManagement>
