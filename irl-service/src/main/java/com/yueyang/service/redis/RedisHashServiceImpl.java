@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 
@@ -47,5 +48,20 @@ public class RedisHashServiceImpl implements RedisHashService {
     @Override
     public Long length(String key) {
         return hashOperations.size(key);
+    }
+
+    @Override
+    public Boolean exists(String key, String field) {
+        return hashOperations.hasKey(key, field);
+    }
+
+    @Override
+    public Set<String> keys(String key) {
+        return hashOperations.keys(key);
+    }
+
+    @Override
+    public Boolean setIfAbsent(String key, String field, String value) {
+        return hashOperations.putIfAbsent(key, field, value);
     }
 }
