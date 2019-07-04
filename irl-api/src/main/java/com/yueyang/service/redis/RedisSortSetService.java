@@ -12,7 +12,7 @@ public interface RedisSortSetService {
      * 将元素及其分数值加入到有序集当中
      * 如果某个成员已经是有序集的成员，那么更新这个成员的分数值，并通过重新插入这个成员元素，来保证该成员在正确的位置上。
      */
-    void add(String key, Double score, String value);
+    Boolean add(String key, Double score, String value);
 
     /**
      * 返回有序集中，指定区间内的成员，从小到大
@@ -42,7 +42,7 @@ public interface RedisSortSetService {
     /**
      * 移除有序集中的一个或多个成员，不存在的成员将被忽略。
      */
-    void delete(String key, String value);
+    Long delete(String key, String value);
 
     /**
      * 计算集合中元素的数量
@@ -52,13 +52,18 @@ public interface RedisSortSetService {
     /**
      * 返回有序集中，成员的分数值。
      */
-    Set<String> score(String key);
+    Double score(String key,String member);
 
     /**
-     * 返回有序集中指定成员的排名 有小到大
+     * 返回有序集中指定成员的排名 由小到大
+     */
+    Long rank(String key, String member);
+
+    /**
+     * 返回有序集中指定成员的排名 由大到小
      * @param key
      * @param member
      * @return
      */
-    Long rank(String key, String member);
+    Long revRank(String key, String member);
 }

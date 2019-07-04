@@ -12,12 +12,12 @@ public interface RedisSetService {
     /**
      * 命令将一个或多个成员元素加入到集合中
      */
-    void add(String key, String... values);
+    Long add(String key, String... values);
 
     /**
      * 移除集合中的一个或多个成员元素，不存在的成员元素会被忽略
      */
-    void delete(String key, String... values);
+    Long delete(String key, String... values);
 
     /**
      * 返回集合中的所有的成员
